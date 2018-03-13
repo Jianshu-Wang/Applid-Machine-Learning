@@ -39,7 +39,7 @@ def extract_pieces_eachfile(signal):
     piece_number = int(length) / 16
     for i in range(0, piece_number-1):
         start = int(i) * 16
-        end = int(i)*16 + 24
+        end = int(i)*16 + 32
         data = signal[start:end][:]
         signal_list.append(data)
     return signal_list
@@ -95,7 +95,7 @@ labels = ['Brush_teeth', 'Climb_stairs', 'Comb_hair', 'Descend_stairs', 'Drink_g
 
 path_labels = [0, 1, 1, 2, 3, 4, 4, 5, 6, 7, 7, 8, 9, 9, 10, 10, 11, 11, 12, 13, 13]
 # set k = 480
-k = 480
+k = 600
 
 data_dic = {}
 for item in range(0, len(path2)):
@@ -170,7 +170,7 @@ train_encoder_vector = le.transform(train_label_vector)
 
 
 current_tree = 10
-current_depth = 16
+current_depth = 24
 
 clf = RandomForestClassifier(n_estimators=current_tree, max_depth=current_depth)
 clf.fit(train_histogram_vector, train_encoder_vector)
